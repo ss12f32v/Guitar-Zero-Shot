@@ -793,5 +793,20 @@
         </footer>
     </div>
 </body>
+<script>
+  // Select all audio elements with the class 'audio-player'
+  const audios = document.querySelectorAll('audio');
+  let currentAudio = null;
 
+  audios.forEach(audio => {
+      audio.addEventListener('play', () => {
+          // Pause the currently playing audio if it's different from the new one
+          if (currentAudio && currentAudio !== audio) {
+              currentAudio.pause();
+          }
+          // Update the currently playing audio
+          currentAudio = audio;
+      });
+  });
+</script>
 </html>
