@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>NEURAL AMPLIFIER MODELLING WITH SEVERAL GAN VARIANTS</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <table border="0">
+                <tr>
+                    <td>
+                        <h1>Towards Zero-Shot Amplifier Modeling: One-to-Many Amplifier Modeling via Tone Embedding Control</h1>
+                    </td>
+                </tr>
+            </table>
+
+        </header>
+
+
+
+        <div class="visible" id="area2">
+
+
+         
+
+         <!-- <p>
+            We demonstrate one audio sample for each amplifier on different setting.
+            <ul>
+            <li> <b> Input </b> is a clean audio extract from EGDB test-set.
+               </li>
+            <li> <b> Target </b> is the corresponding amplifier rendered audio extract from EGDB test-set.
+               </li>
+            <li> <b> Baseline </b> is the audio generated from the model we trained on the baseline method.
+            <li> <b> MPD+MSD </b> is the audio generated from our model with replaced discriminator: MPD+MSD.</li>
+          
+            </ul>
+         </p> -->
+
+<br>
+
+<h2>We would like to thank the reviewers for taking the time to listen to the supplementary material. We recommend wearing headphones to listen to the audio samples.</h2>
+</br>
+
+<hr style="border-color:rgba(0, 0, 0, 0.726);">
+
+<br><br>
+<h2>Nine amplifiers performance of each model in Table 1 </h2>
+<br>
+<p>
+   Comparison of the performance of different conditioning methods: Concat and FiLM with both Tone Embedding from paired reference and Look-Up Table (LUT) mechanisms, including a variant of using unpaired audio reference. The following audio samples present the results discussed in Section 4.2. <ul>
+   <li> <b> Input </b> : A clean audio extract from the test set.
+      </li>
+   <li> <b> Ground truth </b> : The corresponding amplifier-rendered audio extract from the test set.
+      </li>
+   <li> <b> Concat + LUT </b> : Audio generated using concatenation conditioning method and LUT embedding representation.
+   <li> <b> Concat + Paired tone embedding </b> : Audio generated using concatenation conditioning method and tone embedding extracted from paired reference audio.
+   <li> <b> FiLM + LUT </b> : Audio generated using FiLM conditioning method and LUT embedding representation.
+   <li> <b> FiLM + Paired tone embedding </b> : Audio generated using FiLM conditioning method and tone embedding extracted from paired reference audio.
+   <li> <b> FiLM + Unpaired tone embedding </b> : Audio generated using FiLM conditioning method and tone embedding extracted from unpaired reference audio.
+
+   </ul>
+</p>
+
+<table>
+   <!-- Header Row -->
+   <tr class="header">
+     <td class="audio"><h3></h3></td> 
+     <td class="audio"><h3>Input</h3></td>
+     <td class="audio"><h3>Ground Truth</h3></td>
+     <td class="audio"><h3>Concat + LUT</h3></td>
+     <td class="audio"><h3>Concat + Paired tone embedding</h3></td>
+     <td class="audio"><h3>FiLM + LUT</h3></td>
+     <td class="audio"><h3>FiLM + Paired tone embedding</h3></td>
+     <td class="audio"><h3>FiLM + Unpaired tone embedding</h3></td>
+   </tr>
+ 
+   <!-- First Audio Row -->
+   <tr class="odd">
+     <td class="secondary">Amp 1</td>
+     <td class="audio">
+       <audio controls preload="none" style="width: 150px;">
+         <source src="audio/clean/2.wav" type="audio/wav">
+       </audio>
+     </td>
+     <td class="audio">
+       <audio controls preload="none" style="width: 150px;">
+         <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/0/2_target.wav" type="audio/wav">
+       </audio>
+     </td>
+     <td class="audio">
+       <audio controls preload="none" style="width: 150px;">
+         <source src="audio/ismir_concat_lut_wavs/0/2.wav" type="audio/wav">
+       </audio>
+     </td>
+     <td class="audio">
+       <audio controls preload="none" style="width: 150px;">
+         <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/0/2_predict.wav" type="audio/wav">
+       </audio>
+     </td>
+     <td class="audio">
+       <audio controls preload="none" style="width: 150px;">
+         <source src="audio/ismir_film_lut_wavs/0/2.wav" type="audio/wav">
+       </audio>
+     </td>
+     <td class="audio">
+       <audio controls preload="none" style="width: 150px;">
+         <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/0/2_predict.wav" type="audio/wav">
+       </audio>
+     </td>
+     <td class="audio">
+       <audio controls preload="none" style="width: 150px;">
+         <source src="audio/Cleanfilmgcn_complex_loss_supervised/0/2_predict.wav" type="audio/wav">
+       </audio>
+     </td>
+   </tr>
+   <!-- Additional rows would follow here -->
+<!-- Second Audio Row -->
+<tr class="odd">
+   <td class="secondary">Amp 2</td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/clean/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/1/2_target.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_concat_lut_wavs/1/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/1/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_film_lut_wavs/1/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/1/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_supervised/1/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+ </tr>
+<!-- Third Audio Row -->
+<tr class="odd">
+   <td class="secondary">Amp 3</td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/clean/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/2/2_target.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_concat_lut_wavs/2/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/2/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_film_lut_wavs/2/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/2/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_supervised/2/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+ </tr>
+ <!-- Fourth Audio Row -->
+<tr class="odd">
+   <td class="secondary">Amp 4</td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/clean/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/3/2_target.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_concat_lut_wavs/3/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/3/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_film_lut_wavs/3/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/3/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_supervised/3/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+ </tr>
+
+
+<!-- Fifth Audio Row -->
+<tr class="odd">
+   <td class="secondary">Amp 5</td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/clean/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/4/2_target.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_concat_lut_wavs/4/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/4/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_film_lut_wavs/4/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/4/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_supervised/4/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+ </tr>
+
+
+<!-- Sixth Audio Row -->
+<tr class="odd">
+   <td class="secondary">Amp 6</td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/clean/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/5/2_target.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_concat_lut_wavs/5/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/5/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_film_lut_wavs/5/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/5/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_supervised/5/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+ </tr>
+<!-- Seventh Audio Row -->
+<tr class="odd">
+   <td class="secondary">Amp 7</td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/clean/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/6/2_target.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_concat_lut_wavs/6/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/6/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_film_lut_wavs/6/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/6/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_supervised/6/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+ </tr>
+<!-- Eigth Audio Row -->
+<tr class="odd">
+   <td class="secondary">Amp 8</td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/clean/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/7/2_target.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_concat_lut_wavs/7/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/7/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_film_lut_wavs/7/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/7/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_supervised/7/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+ </tr>
+<!-- Ninth Audio Row -->
+<tr class="odd">
+   <td class="secondary">Amp 9</td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/clean/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/8/2_target.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_concat_lut_wavs/8/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanconcatgcn_complex_loss_pairreference_supervised/8/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/ismir_film_lut_wavs/8/2.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_pairreference_supervised/8/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+   <td class="audio">
+     <audio controls preload="none" style="width: 150px;">
+       <source src="audio/Cleanfilmgcn_complex_loss_supervised/8/2_predict.wav" type="audio/wav">
+     </audio>
+   </td>
+ </tr>
+ </table>
+
+
+ <br></br>
+ <hr style="border-color:rgba(0, 0, 0, 0.726);">
+
+<!-- exp2 -->
+<br><br>
+<h2>Zero shot on two additional amplifiers</h2>
+<br>
+
+<p>
+   We evaluate three reference tone embedding methods based on FiLM conditioning and unpaired reference. 
+   The following audio samples present the results discussed in Section 4.3.
+   <ul>
+   <li> <b> Input </b> : A clean audio extract from the test set.
+   <li> <b> Ground Truth </b> : The corresponding unseen amplifier-rendered audio extract from the test set.
+   <li> <b> Non-retrieval embedding </b> : Same as the FiLM + Unpaired tone embedding setting, which does not change the reference tone embedding.
+   <li> <b> Mean embedding </b> : Replaces the reference tone embedding with an amplifier embedding that has the highest cosine similarity.
+   <li> <b> Nearest embedding </b> : Replaces the reference tone embedding with a seen tone embedding during training that has the highest cosine similarity.
+
+
+      </li>
+   </ul>
+</p>
+
+<table>
+<tr class="highlight">
+<td class="secondary">
+</td>
+
+<tr class="header">
+   <td class="audio"><h3></h3></td> 
+   <td class="audio"><h3>Input</h3></td>
+   <td class="audio"><h3>Ground Truth</h3></td>
+   <td class="audio"><h3>Non-retrieval embedding</h3></td>
+   <td class="audio"><h3>Mean embedding</h3></td>
+   <td class="audio"><h3>Nearest embedding</h3></td>
+   
+ </tr>
+
+
+
+</tr><tr class="odd">
+   <td class="secondary">
+      Amp 1 Low Gain
+   </td>
+   
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/14_amp_0_clean.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/14_amp_0_target.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/14_amp_0_emb_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/14_amp_0_mean_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/14_amp_0_nearest_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   </tr>
+
+</tr><tr class="odd">
+   <td class="secondary">
+      Amp 1 Low Gain
+   </td>
+   
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/21_amp_0_clean.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/21_amp_0_target.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/21_amp_0_emb_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/21_amp_0_mean_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/21_amp_0_nearest_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   </tr>
+
+
+</tr><tr class="odd">
+   <td class="secondary">
+      Amp 2 High Gain
+   </td>
+   
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/40_amp_1_clean.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/40_amp_1_target.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/40_amp_1_emb_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/40_amp_1_mean_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/40_amp_1_nearest_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   </tr>
+
+</tr><tr class="odd">
+   <td class="secondary">
+      Amp 2 High Gain
+   </td>
+   
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/48_amp_1_clean.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/48_amp_1_target.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/48_amp_1_emb_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/48_amp_1_mean_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/zeroshot/48_amp_1_nearest_predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   </tr>
+
+</table>
+
+<br></br>
+<hr style="border-color:rgba(0, 0, 0, 0.726);">
+
+<!-- exp3 -->
+<br><br>
+<h2>Zero shot on self-recorded audio</h2>
+<br>
+
+<p>
+   We test our method’s capability to model
+   a self-recorded guitar audio with unseen content and tone
+   from the training process.
+
+   
+   <!-- <ul>
+   <li> <b> Input </b> is the audio extract from Guitarset in "mic" setting.
+   <li> <b> MPD+MSD </b> is the audio generated from our model with replaced discriminator: MPD+MSD.
+      </li>
+   </ul> -->
+</p>
+
+<table>
+<tr class="highlight">
+<td class="secondary">
+</td>
+
+
+<!-- <h3>First</h3> -->
+<p>
+  <!-- Test -->
+   <ul>
+   <li> <b> Lead L </b> : Left channel of lead track.
+   <li> <b> Lead R </b> : Right channel of lead track.
+   <li> <b> RH L </b> : Left channel of rhythm track.
+   <li> <b> RH R </b> : Right channel of rhythm track.
+   <li> <b> Solo </b> : Solo track. Part of this clip is discussed and analysis in the section 4.4. 
+
+
+      </li>
+   </ul>
+</p>
+<tr class="header">
+   <td class="audio"><h3></h3></td> 
+   <td class="audio"><h3>Lead L </h3></td>
+   <td class="audio"><h3>Lead R</h3></td>
+   <td class="audio"><h3>RH L</h3></td>
+   <td class="audio"><h3>RH R</h3></td>
+   <td class="audio"><h3>Solo</h3></td>
+ </tr>
+
+</tr><tr class="odd">
+   <td class="secondary">
+      Clean tone 
+   </td>
+   
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/Lead L dry.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/Lead R dry.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/RH L dry.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/RH R dry.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/Solo dry.wav" type="audio/wav">
+      </audio>
+   </td>
+   </tr>
+
+
+</tr>
+<tr class="odd">
+   <td class="secondary">
+      Amplifier Rendered audio 
+   </td>
+   
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/Lead L wet.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/Lead R wet.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/RH L wet.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/RH R wet.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo/Solo wet.wav" type="audio/wav">
+      </audio>
+   </td>
+   </tr>
+
+</tr><tr class="odd">
+   <td class="secondary">
+      audio generated from our method  
+   </td>
+   
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo_results/Lead L _predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo_results/Lead R _predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo_results/RH L _predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo_results/RH R _predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   <td class="audio">
+      <audio controls preload="none" style="width: 150px;">
+         <source src="audio/demo_results/Solo _predict.wav" type="audio/wav">
+      </audio>
+   </td>
+   </tr>
+ </table>
+
+
+
+
+
+ <p>
+   
+   We mixed these audio samples with bass, drum and keyboard tracks to test the overall quality in a real-world usage scenario. We recommend <span style="color: red;">turning down the volume</span> before listening to these results, as the dynamic range has not been compressed to preserve the characteristics of each track.
+ </p>
+
+ <div style="text-align: center; margin-top: 40px;"> <!-- Adjust margin-top as needed -->
+   <div class="audio-label" style="display: inline-block; margin-right: 20px;">
+     <label for="audio-left">Mix of wet signals rendered by commercial software</label>
+     <audio id="audio-left" controls preload="none" style="width: 170px;">
+       <source src="audio/demo_mix_original.m4a" type="audio/wav">
+     </audio>
+   </div>
+ 
+   <div class="audio-label" style="display: inline-block;">
+     <label for="audio-right">Mix of wet signals rendered by our model</label>
+     <audio id="audio-right" controls preload="none" style="width: 170px;">
+       <source src="audio/demo_remix.m4a" type="audio/wav">
+     </audio>
+   </div>
+ </div>
+
+
+
+
+
+         <br><br>
+            
+         </div>
+
+        <footer class="footer">
+            <p><i></i></p>
+        </footer>
+    </div>
+</body>
+
+</html>
